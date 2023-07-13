@@ -4,6 +4,7 @@ Pasos proyecto MVC
     npm i express
     npm i -D nodemon // Para desarrollo
     npm i pug
+    npm i -D tailwindcss autoprefixer postcss postcss-cli // Tailwind
 2. Generar Modificar package.json
     "scripts": {
         "start" : "node index.js",
