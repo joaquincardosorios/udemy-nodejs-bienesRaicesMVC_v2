@@ -2,7 +2,7 @@
 
 const formularioLogin = (req,res) => {
     res.render('auth/login',{
-        
+        pagina: 'Iniciar Sesion'
     })
 }
 
