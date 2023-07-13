@@ -4,8 +4,12 @@ import usuarioRoutes from './routes/usuarioRoutes.js'
 // Crear la app
 const app = express();
 
+// Habilitar PUG
+app.set('view engine', 'pug')
+app.set('views', './views')
+
 // Routing
-app.use('/', usuarioRoutes)
+app.use('/auth', usuarioRoutes)
 
 // Definir puerto y arrancar proyecto
 const port = 3000;

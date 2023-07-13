@@ -1,0 +1,17 @@
+@base = http://localhost:3000
+
+#### GET
+GET {{base}}/auth/login
+
+#### POST
+POST {{base}}/auth
+Content-Type: application/json
+
+
+# GET {{base}}/prestamo/reporte/solicitud
+# Authorization: Bearer {{token}}
+# Content-Type: application/json
+
+# {
+#     "id": 32
+# }
