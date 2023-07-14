@@ -8,8 +8,9 @@ Pasos proyecto MVC
     npm i sequelize mysql2
     npm i dotenv
     npm i express-validator
-    npm i bcrypt
+    npm i bcrypt //hasear passwords
     npm i nodemailer
+    npm i csurf cookie-parse // proteger contra CSRF
 2. Generar Modificar package.json
     "scripts": {
         "start" : "node index.js",
