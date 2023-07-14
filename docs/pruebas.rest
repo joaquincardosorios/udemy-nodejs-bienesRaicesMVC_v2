@@ -3,9 +3,17 @@
 #### GET
 GET {{base}}/auth/login
 
+
+
 #### POST
-POST {{base}}/auth
+POST {{base}}/auth/registro
 Content-Type: application/json
+
+{
+    "nombre": "Joaquin",
+    "email": "juako.r@gmail.com",
+    "password": "juako90",
+}
 
 
 # GET {{base}}/prestamo/reporte/solicitud
