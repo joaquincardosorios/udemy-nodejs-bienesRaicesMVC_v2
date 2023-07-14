@@ -9,6 +9,7 @@ Pasos proyecto MVC
     npm i dotenv
     npm i express-validator
     npm i bcrypt
+    npm i nodemailer
 2. Generar Modificar package.json
     "scripts": {
         "start" : "node index.js",
