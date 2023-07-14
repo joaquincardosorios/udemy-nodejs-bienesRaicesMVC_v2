@@ -4,18 +4,11 @@ import cookieParser from 'cookie-parser'
 import usuarioRoutes from './routes/usuarioRoutes.js'
 import db from './config/db.js';
 
-// Crear la app
-const app = express();
 
-// Habilitar lectura de datos de formularios
-app.use(express.urlencoded({extended: true}))
-
-// Habilitar Cookie Parser
-app.use(cookieParser())
-
-// Habilitar CSRF
-let csrfProtection = csrf({cookie: true})
-// app.use( csrf({csrf: true}))
+const app = express(); // Crear la app
+app.use(express.urlencoded({extended: true})) // Habilitar lectura de datos de formularios
+app.use(cookieParser()) // Habilitar Cookie Parser
+let csrfProtection = csrf({cookie: true}) // Habilitar CSRF
 
 // Conexion a la base de datos
 try {
@@ -26,15 +19,10 @@ try {
     console.log(error)
 }
 
-// Habilitar PUG
-app.set('view engine', 'pug')
+app.set('view engine', 'pug') // Habilitar PUG
 app.set('views', './views')
-
-// Carpeta publica
-app.use(express.static('public'))
-
-// Routing
-app.use('/auth',csrfProtection, usuarioRoutes)
+app.use(express.static('public')) // Carpeta publica
+app.use('/auth',csrfProtection, usuarioRoutes) // Routing
 
 // Definir puerto y arrancar proyecto
 const port = process.env.PORT || 3000;
