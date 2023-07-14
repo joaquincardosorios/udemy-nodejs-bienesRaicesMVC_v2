@@ -7,6 +7,8 @@ Pasos proyecto MVC
     npm i -D tailwindcss autoprefixer postcss postcss-cli // Tailwind
     npm i sequelize mysql2
     npm i dotenv
+    npm i express-validator
+    npm i bcrypt
 2. Generar Modificar package.json
     "scripts": {
         "start" : "node index.js",
