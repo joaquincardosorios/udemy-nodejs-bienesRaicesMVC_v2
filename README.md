@@ -12,6 +12,7 @@ Pasos proyecto MVC
     npm i nodemailer
     npm i csurf cookie-parse // proteger contra CSRF
     npm i jsonwebtoken
+    npm i -D webpack webpack-cli
 2. Generar Modificar package.json
     "scripts": {
         "start" : "node index.js",
