@@ -2,7 +2,8 @@
 
 const admin = (req,res) => {
     res.render('propiedades/admin', {
-        pagina: 'Mis propiedades'
+        pagina: 'Mis propiedades',
+        barra: true
     })
 }
 
