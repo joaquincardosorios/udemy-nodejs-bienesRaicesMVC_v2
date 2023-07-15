@@ -1,6 +1,5 @@
 import {check, validationResult} from 'express-validator'
 import bcrypt from 'bcrypt'
-import jwt from 'jsonwebtoken'
 import Usuario from "../model/Usuario.js"
 import { generarId, generarJWT } from '../helpers/token.js'
 import { emailRegistro, emailOlvidePassword } from '../helpers/emails.js'
@@ -59,7 +58,6 @@ const autenticar = async (req,res) => {
     // Autentica usuario
     const token = generarJWT({id: usuario.id, nombre:usuario.nombre})
     
-
     // Almacenar en un cookie
     return res.cookie('_token', token,{
         httpOnly:true,

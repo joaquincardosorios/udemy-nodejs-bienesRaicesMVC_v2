@@ -11,6 +11,7 @@ Pasos proyecto MVC
     npm i bcrypt //hasear passwords
     npm i nodemailer
     npm i csurf cookie-parse // proteger contra CSRF
+    npm i jsonwebtoken
 2. Generar Modificar package.json
     "scripts": {
         "start" : "node index.js",
