@@ -1,6 +1,7 @@
 import express from "express";
 import { 
     formularioLogin, 
+    autenticar,
     formularioRegistro, 
     registrar, 
     confirmar, 
@@ -13,7 +14,9 @@ import {
 const router = express.Router();
 
 
-router.get('/login', formularioLogin)
+router.route('/login')
+    .get(formularioLogin)
+    .post(autenticar)
 
 router.route('/registro')
     .get(formularioRegistro)
