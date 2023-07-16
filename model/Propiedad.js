@@ -7,7 +7,7 @@ const Propiedad = db.define('propiedades',{
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
         allowNull: false,
-        primaryKeu: true
+        primaryKey: true
     },
     titulo:{
         type: DataTypes.STRING(100),

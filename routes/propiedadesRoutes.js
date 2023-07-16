@@ -1,9 +1,11 @@
 import express from 'express'
-import { admin, crear } from '../controllers/propiedadesController.js'
+import { admin, crear, guardar } from '../controllers/propiedadesController.js'
 
 const router = express.Router()
 
 router.get('/mis-propiedades', admin)
-router.get('/propiedades/crear', crear)
+router.route('/propiedades/crear')
+    .get(crear)
+    .post(guardar)
 
 export default router
