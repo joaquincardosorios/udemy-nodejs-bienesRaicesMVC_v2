@@ -3,6 +3,7 @@ import csrf  from 'csurf'
 import cookieParser from 'cookie-parser'
 import usuarioRoutes from './routes/usuarioRoutes.js'
 import propiedadesRoutes from './routes/propiedadesRoutes.js'
+import protegerRuta from './middleware/seguridad.js'
 import db from './config/db.js';
 
 
@@ -24,7 +25,7 @@ app.set('view engine', 'pug') // Habilitar PUG
 app.set('views', './views')
 app.use(express.static('public')) // Carpeta publica
 app.use('/auth',csrfProtection, usuarioRoutes) // Routing
-app.use('/',csrfProtection, propiedadesRoutes)
+app.use('/',csrfProtection, protegerRuta, propiedadesRoutes)
 
 // Definir puerto y arrancar proyecto
 const port = process.env.PORT || 3000;
