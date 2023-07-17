@@ -13,6 +13,9 @@ Pasos proyecto MVC
     npm i csurf cookie-parse // proteger contra CSRF
     npm i jsonwebtoken
     npm i -D webpack webpack-cli
+    npm i --save-dev concurrently
+    npm i dropzone@5.9.3
+    npm i multer
 2. Generar Modificar package.json
     "scripts": {
         "start" : "node index.js",

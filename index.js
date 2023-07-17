@@ -10,7 +10,8 @@ import db from './config/db.js';
 const app = express(); // Crear la app
 app.use(express.urlencoded({extended: true})) // Habilitar lectura de datos de formularios
 app.use(cookieParser()) // Habilitar Cookie Parser
-let csrfProtection = csrf({cookie: true}) // Habilitar CSRF
+
+app.use(csrf({ cookie: true })); // Habilitar CSRF
 
 // Conexion a la base de datos
 try {
@@ -24,8 +25,8 @@ try {
 app.set('view engine', 'pug') // Habilitar PUG
 app.set('views', './views')
 app.use(express.static('public')) // Carpeta publica
-app.use('/auth',csrfProtection, usuarioRoutes) // Routing
-app.use('/',csrfProtection, protegerRuta, propiedadesRoutes)
+app.use('/auth', usuarioRoutes) // Routing
+app.use('/', protegerRuta, propiedadesRoutes)
 
 // Definir puerto y arrancar proyecto
 const port = process.env.PORT || 3000;

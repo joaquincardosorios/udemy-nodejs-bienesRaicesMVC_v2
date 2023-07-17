@@ -1,6 +1,7 @@
 import express from 'express'
 import { body } from 'express-validator'
-import { admin, crear, guardar, agregarImagen } from '../controllers/propiedadesController.js'
+import { admin, crear, guardar, agregarImagen, almacenarImagen } from '../controllers/propiedadesController.js'
+import upload from '../middleware/subirImagen.js'
 
 const router = express.Router()
 
@@ -19,7 +20,10 @@ router.post('/propiedades/crear',
     body('lat').notEmpty().withMessage('Ubica la propiedad en el mapa'),
     guardar
 )
-
 router.get('/propiedades/agregar-imagen/:id', agregarImagen)
+router.post('/propiedades/agregar-imagen/:id', 
+    upload.single('imagen'),
+    almacenarImagen
+)
 
 export default router
