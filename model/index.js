@@ -9,7 +9,7 @@ import Usuario from "./Usuario.js";
 
 Propiedad.belongsTo(Precio, {foreignKey: 'precioId', onDelete:'CASCADE'})
 Propiedad.belongsTo(Categoria, {foreignKey: 'categoriaId', onDelete:'CASCADE'})
-Propiedad.belongsTo(Usuario, {foreignKey: 'UsuarioId'})
+Propiedad.belongsTo(Usuario, {foreignKey: 'usuarioId'})
 
 
 
