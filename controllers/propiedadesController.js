@@ -50,7 +50,7 @@ const guardar = async (req,res) => {
 
     // Crear registro
 
-    const { titulo, descripcion, habitaciones, estacionamiento, wc, calle, lat, lng, precioId :precio, categoria } = req.body
+    const { titulo, descripcion, habitaciones, estacionamiento, wc, calle, lat, lng, precio: precioId, categoria: categoriaId } = req.body
     try {
         const propiedadGuardada = await Propiedad.create({
             titulo,
@@ -62,7 +62,7 @@ const guardar = async (req,res) => {
             lat,
             lng,
             precioId,
-            categoriaId: 
+            categoriaId
         })
     } catch (error) {
         console.log(error)
