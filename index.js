@@ -3,7 +3,7 @@ import csrf  from 'csurf'
 import cookieParser from 'cookie-parser'
 import usuarioRoutes from './routes/usuarioRoutes.js'
 import propiedadesRoutes from './routes/propiedadesRoutes.js'
-import protegerRuta from './middleware/seguridad.js'
+import appRoutes from './routes/appRoutes.js'
 import db from './config/db.js';
 
 
@@ -25,7 +25,9 @@ try {
 app.set('view engine', 'pug') // Habilitar PUG
 app.set('views', './views')
 app.use(express.static('public')) // Carpeta publica
-app.use('/auth', usuarioRoutes) // Routing
+
+app.use('/',appRoutes) // Routing
+app.use('/auth', usuarioRoutes) 
 app.use('/', propiedadesRoutes)
 
 // Definir puerto y arrancar proyecto
