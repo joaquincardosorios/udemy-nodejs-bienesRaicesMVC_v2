@@ -26,7 +26,7 @@ app.set('view engine', 'pug') // Habilitar PUG
 app.set('views', './views')
 app.use(express.static('public')) // Carpeta publica
 app.use('/auth', usuarioRoutes) // Routing
-app.use('/', protegerRuta, propiedadesRoutes)
+app.use('/', propiedadesRoutes)
 
 // Definir puerto y arrancar proyecto
 const port = process.env.PORT || 3000;
