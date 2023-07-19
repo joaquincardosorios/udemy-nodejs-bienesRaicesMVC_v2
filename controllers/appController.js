@@ -10,7 +10,8 @@ const inicio = async (req,res) => {
         Propiedad.findAll({
             limit: 3,
             where: {
-                categoriaId: 1
+                categoriaId: 1,
+                publicado: true
             },
             include: [
                 {model: Precio, as: 'precio'}
@@ -22,7 +23,8 @@ const inicio = async (req,res) => {
         Propiedad.findAll({
             limit: 3,
             where: {
-                categoriaId: 2
+                categoriaId: 2,
+                publicado: true
             },
             include: [
                 {model: Precio, as: 'precio'}
