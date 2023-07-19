@@ -1,7 +1,9 @@
 import { validationResult } from 'express-validator'
 import { unlink } from 'node:fs/promises'
 import { Precio, Categoria, Propiedad } from '../model/index.js'
+import { esVendedor } from '../helpers/index.js'
 
+ 
 const admin = async (req,res) => {
 
     // Leer QueryString
@@ -325,7 +327,9 @@ const mostrarPropiedad = async (req,res) =>{
     res.render('propiedades/mostrar',{
         propiedad,
         pagina: propiedad.titulo,
-        csrfToken: req.csrfToken()
+        csrfToken: req.csrfToken(),
+        usuario: req.usuario,
+        esVendedor: esVendedor(req.usuario?.id === propiedad.usuarioId)
     })
 }
 
