@@ -1,6 +1,6 @@
 import { validationResult } from 'express-validator'
 import { unlink } from 'node:fs/promises'
-import { Precio, Categoria, Propiedad } from '../model/index.js'
+import { Precio, Categoria, Propiedad, Mensaje } from '../model/index.js'
 import { esVendedor } from '../helpers/index.js'
 
  
@@ -333,6 +333,56 @@ const mostrarPropiedad = async (req,res) =>{
     })
 }
 
+const enviarMensaje = async (req,res) => {
+    const { id } = req.params
+    
+    // Comprobar que la propiedad exista
+    const propiedad = await Propiedad.findByPk(id, {
+        include: [
+            {model: Categoria, as: 'categoria'},
+            {model: Precio, as: 'precio'}
+        ]
+    })
+
+    if(!propiedad){
+        return res.redirect('/404')
+    }
+
+    // Renderizar errores
+    let resultado = validationResult(req)
+    if(!resultado.isEmpty()){
+        return res.render('propiedades/mostrar',{
+            propiedad,
+            pagina: propiedad.titulo,
+            csrfToken: req.csrfToken(),
+            usuario: req.usuario,
+            esVendedor: esVendedor(req.usuario?.id === propiedad.usuarioId),
+            errores: resultado.array()
+        })
+    }
+
+    // Almacenar el mensaje
+
+    const { mensaje } = req.body
+    const {id: propiedadId} = req.params
+    const {id: usuarioId} = req.usuario
+
+    await Mensaje.create({
+        mensaje,
+        propiedadId,
+        usuarioId
+    })
+    
+
+    res.render('propiedades/mostrar',{
+        propiedad,
+        pagina: propiedad.titulo,
+        csrfToken: req.csrfToken(),
+        usuario: req.usuario,
+        esVendedor: esVendedor(req.usuario?.id === propiedad.usuarioId),
+        enviado:true
+    })
+}
 
 export{
     admin,
@@ -343,5 +393,6 @@ export{
     editar,
     guardarCambios,
     eliminar,
-    mostrarPropiedad
+    mostrarPropiedad,
+    enviarMensaje
 }
